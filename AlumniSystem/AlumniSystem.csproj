@@ -224,7 +224,9 @@
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Track.cs" />
     <Compile Include="Models\UserMessages.cs" />
+    <Compile Include="Models\_RemoteCheck.cs" />
     <Compile Include="Models\_Roles.cs" />
+    <Compile Include="Models\_ValidationClasses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

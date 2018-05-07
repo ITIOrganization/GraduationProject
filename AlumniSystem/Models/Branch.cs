@@ -14,10 +14,6 @@ namespace AlumniSystem.Models
         [StringLength(50)]
         public string Name { get; set; }
 
-        public Branch()
-        {
-            Graduates = new List<Graduate>();
-        }
         public virtual List<Graduate> Graduates { get; set; }
     }
 }

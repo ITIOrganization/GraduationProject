@@ -14,10 +14,7 @@ namespace AlumniSystem.Models
         [StringLength(30)]
         public string Name { get; set; }
 
-        public Track()
-        {
-            Graduates = new List<Graduate>();
-        }
+
         public virtual List<Graduate> Graduates { get; set; }
     }
 }

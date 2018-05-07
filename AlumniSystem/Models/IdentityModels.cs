@@ -27,13 +27,7 @@ namespace AlumniSystem.Models
 
         [Required]
         public string Address { get; set; }
-        public ApplicationUser()
-        {
-            EventStates = new List<EventState>();
-            Posts = new List<Post>();
-            Comments = new List<Comment>();
-            UserMessages = new List<UserMessages>();
-        }
+
         public virtual List<EventState> EventStates { get; set; }
 
         public virtual List<Post> Posts { get; set; }
@@ -42,6 +36,7 @@ namespace AlumniSystem.Models
 
         public virtual List<UserMessages> UserMessages { get; set; }
 
+        public virtual List<Complain> Complains { get; set; }
 
     }
 

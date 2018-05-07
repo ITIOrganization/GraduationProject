@@ -20,10 +20,7 @@ namespace AlumniSystem.Models
         [DefaultValue(false)]
         public bool IsSeen { get; set; }
 
-        public Message()
-        {
-            UserMessages = new List<UserMessages>();
-        }
+
         public virtual List<UserMessages> UserMessages { get; set; }
     }
 }

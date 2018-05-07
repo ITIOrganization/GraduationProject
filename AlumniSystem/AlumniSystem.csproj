@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201805061232236_aa.Designer.cs">
       <DependentUpon>201805061232236_aa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805071048220_bb.cs" />
+    <Compile Include="Migrations\201805071048220_bb.Designer.cs">
+      <DependentUpon>201805071048220_bb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -207,6 +211,7 @@
     <Compile Include="Models\Certification.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Complain.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventState.cs" />
     <Compile Include="Models\Experience.cs" />
@@ -304,6 +309,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805061232236_aa.resx">
       <DependentUpon>201805061232236_aa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805071048220_bb.resx">
+      <DependentUpon>201805071048220_bb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

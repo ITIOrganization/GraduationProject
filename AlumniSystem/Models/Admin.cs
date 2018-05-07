@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 
 namespace AlumniSystem.Models
-{
+{//mohga
     public class Admin
     {
         [Key]

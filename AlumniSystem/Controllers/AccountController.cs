@@ -20,7 +20,11 @@ namespace AlumniSystem.Controllers
 
         public AccountController()
         {
+<<<<<<< HEAD
 //king  //king
+=======
+            //sara ahmed is talking
+>>>>>>> cd043db9b96fb1061425d743dba769b5a694ba40
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )

@@ -20,6 +20,8 @@ namespace AlumniSystem.Controllers
 
         public AccountController()
         {
+            //king is talking
+
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )

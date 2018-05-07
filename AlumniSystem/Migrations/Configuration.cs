@@ -1,3 +1,5 @@
+using AlumniSystem.Models;
+
 namespace AlumniSystem.Migrations
 {
     using System;
@@ -18,12 +20,14 @@ namespace AlumniSystem.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
-            //context.Roles.AddOrUpdate(
+            context.Roles.AddOrUpdate(
 
-            //    new ApplicationRole() { Id = "1", Name = "Admin" },
-            //    new ApplicationRole() { Id = "2", Name = "Instructor" },
-            //    new ApplicationRole() { Id = "3", Name = "Student" }
-            //);
+                new ApplicationRole() { Id = "1", Name = "Admin" },
+                new ApplicationRole() { Id = "2", Name = "Staff" },
+                new ApplicationRole() { Id = "3", Name = "Graduate" },
+                new ApplicationRole() { Id = "4", Name = "Company" }
+
+            );
         }
     }
 }

@@ -20,7 +20,7 @@ namespace AlumniSystem.Controllers
 
         public AccountController()
         {
-            //king is talking
+            //fs fffffffffffffffftalking
 
         }
 

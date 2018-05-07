@@ -44,6 +44,7 @@ namespace AlumniSystem.Models
 
 
     }
+    
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

@@ -46,6 +46,49 @@ namespace AlumniSystem.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public virtual DbSet<Admin> Admin { get; set; }
+
+        public virtual DbSet<Article> Article { get; set; }
+
+        public virtual DbSet<Branch> Branche { get; set; }
+
+        public virtual DbSet<Certification> Certification { get; set; }
+
+        public virtual DbSet<Comment> Comment { get; set; }
+
+        public virtual DbSet<Company> Company { get; set; }
+
+        public virtual  DbSet<Complain> Complain { get; set; }
+
+        public virtual DbSet<Event> Event { get; set; }
+
+        public virtual DbSet<EventState> EventState { get; set; }
+
+        public virtual DbSet<Experience> Experience { get; set; }
+
+        public virtual DbSet<Graduate> Graduate { get; set; }
+
+        public virtual DbSet<Interest> Interest { get; set; }
+
+        public virtual DbSet<Like> Like { get; set; }
+
+        public virtual DbSet<Message> Message { get; set; }
+
+        public virtual DbSet<Post> Post { get; set; }
+
+        public virtual DbSet<Profile> Profile { get; set; }
+
+        public virtual DbSet<Project> Project { get; set; }
+
+        public virtual DbSet<Qualifications> Qualifications { get; set; }
+
+        public virtual DbSet<Skill> Skill { get; set; }
+
+        public virtual DbSet<Staff> Staff{ get; set; }
+
+        public virtual DbSet<Track> Track { get; set; }
+
+        public virtual DbSet<UserMessages> UserMessage { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

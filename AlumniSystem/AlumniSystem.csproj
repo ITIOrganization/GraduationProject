@@ -203,6 +203,10 @@
     <Compile Include="Migrations\201805071048220_bb.Designer.cs">
       <DependentUpon>201805071048220_bb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805071837213_dd.cs" />
+    <Compile Include="Migrations\201805071837213_dd.Designer.cs">
+      <DependentUpon>201805071837213_dd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -218,6 +222,8 @@
     <Compile Include="Models\Graduate.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Interest.cs" />
+    <Compile Include="Models\JobTitle.cs" />
+    <Compile Include="Models\Keyword.cs" />
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
@@ -317,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805071048220_bb.resx">
       <DependentUpon>201805071048220_bb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805071837213_dd.resx">
+      <DependentUpon>201805071837213_dd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

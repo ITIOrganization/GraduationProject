@@ -195,17 +195,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805070929296_init.cs" />
-    <Compile Include="Migrations\201805070929296_init.Designer.cs">
-      <DependentUpon>201805070929296_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805071048220_bb.cs" />
-    <Compile Include="Migrations\201805071048220_bb.Designer.cs">
-      <DependentUpon>201805071048220_bb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805071837213_dd.cs" />
-    <Compile Include="Migrations\201805071837213_dd.Designer.cs">
-      <DependentUpon>201805071837213_dd.cs</DependentUpon>
+    <Compile Include="Migrations\201805081303274_init.cs" />
+    <Compile Include="Migrations\201805081303274_init.Designer.cs">
+      <DependentUpon>201805081303274_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -216,25 +208,33 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Complain.cs" />
+    <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventState.cs" />
     <Compile Include="Models\Experience.cs" />
+    <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Graduate.cs" />
+    <Compile Include="Models\GraduateType.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Interest.cs" />
+    <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobTitle.cs" />
+    <Compile Include="Models\JobType.cs" />
     <Compile Include="Models\Keyword.cs" />
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Qualifications.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\State.cs" />
     <Compile Include="Models\Track.cs" />
     <Compile Include="Models\UserMessages.cs" />
+    <Compile Include="Models\UsersApplications.cs" />
     <Compile Include="Models\_RemoteCheck.cs" />
     <Compile Include="Models\_Roles.cs" />
     <Compile Include="Models\_ValidationClasses.cs" />
@@ -303,7 +303,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805081303274_init.resx">
+      <DependentUpon>201805081303274_init.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
@@ -316,17 +320,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805070929296_init.resx">
-      <DependentUpon>201805070929296_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805071048220_bb.resx">
-      <DependentUpon>201805071048220_bb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805071837213_dd.resx">
-      <DependentUpon>201805071837213_dd.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

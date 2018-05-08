@@ -17,18 +17,24 @@ namespace AlumniSystem.Models
         public string Name { get; set; }
 
         [Required]
+        public string Description { get; set; }
+
+        [Required]
         public DateTime StartDate { get; set; }
 
         [Required]
         public DateTime EndDate { get; set; }
 
-        [Required]
         [DefaultValue(false)]
         public int IsApproved { get; set; }
 
         [Required]
+        public string Location { get; set; }
+        
         [DefaultValue(false)]
         public bool IsFinished { get; set; }
+
+        public string EventImage { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }

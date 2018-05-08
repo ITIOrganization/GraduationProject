@@ -18,14 +18,13 @@ namespace AlumniSystem.Models
         [StringLength(500)]
         public string CareerObjective { get; set; }
 
+        public int Intake { get; set; }
+
         [ForeignKey("Track")]
         public int TrackId { get; set; }
 
         [ForeignKey("Branch")]
         public int BranchId { get; set; }
-
-        [ForeignKey("Qualifications")]
-        public int QualificationsId { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }
 
@@ -34,8 +33,6 @@ namespace AlumniSystem.Models
         public virtual Track Track { get; set; }
 
         public virtual Branch Branch { get; set; }
-
-        public virtual Qualifications Qualifications { get; set; }
 
         public virtual List<Certification> Certifications { get; set; }
 
@@ -46,5 +43,8 @@ namespace AlumniSystem.Models
         public virtual List<Experience> Experiences { get; set; }
 
         public virtual List<Project> Projects { get; set; }
+
+        public virtual List<UsersApplications> UsersApplications { get; set; }
+
     }
 }

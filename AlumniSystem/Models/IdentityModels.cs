@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 namespace AlumniSystem.Models
 {
@@ -19,11 +20,13 @@ namespace AlumniSystem.Models
             return userIdentity;
         }
 
+
+        public string ProfileImage { get; set; }
         [Required]
         public string Name { get; set; }
 
-        [Range(18,100)]
-        public int Age { get; set; }
+        [DateOfBirthValidate]
+        public DateTime DateOfBirth { get; set; }
 
         [Required]
         public string Address { get; set; }
@@ -38,6 +41,16 @@ namespace AlumniSystem.Models
 
         public virtual List<Complain> Complains { get; set; }
 
+        public virtual List<Like> Likes { get; set; }
+
+        public virtual List<Qualifications> Qualifications { get; set; }
+
+        public virtual List<Notification> Notifications { get; set; }
+
+        public virtual List<Group> Groups { get; set; }
+
+        public virtual List<Keyword> Keywords { get; set; }
+
     }
 
     public class ApplicationRole : IdentityRole
@@ -46,49 +59,56 @@ namespace AlumniSystem.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public virtual DbSet<Admin> Admin { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
 
-        public virtual DbSet<Article> Article { get; set; }
+        public virtual DbSet<Article> Articles { get; set; }
 
-        public virtual DbSet<Branch> Branche { get; set; }
+        public virtual DbSet<Branch> Branches { get; set; }
 
-        public virtual DbSet<Certification> Certification { get; set; }
+        public virtual DbSet<Certification> Certifications { get; set; }
 
-        public virtual DbSet<Comment> Comment { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
 
-        public virtual DbSet<Company> Company { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
 
-        public virtual  DbSet<Complain> Complain { get; set; }
+        public virtual  DbSet<Complain> Complains { get; set; }
 
-        public virtual DbSet<Event> Event { get; set; }
+        public virtual DbSet<Event> Events { get; set; }
 
-        public virtual DbSet<EventState> EventState { get; set; }
+        public virtual DbSet<EventState> EventStates { get; set; }
 
-        public virtual DbSet<Experience> Experience { get; set; }
+        public virtual DbSet<Experience> Experiences { get; set; }
 
-        public virtual DbSet<Graduate> Graduate { get; set; }
+        public virtual DbSet<Graduate> Graduates { get; set; }
 
-        public virtual DbSet<Interest> Interest { get; set; }
+        public virtual DbSet<Interest> Interests { get; set; }
 
-        public virtual DbSet<Like> Like { get; set; }
+        public virtual DbSet<Like> Likes { get; set; }
 
-        public virtual DbSet<Message> Message { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
 
-        public virtual DbSet<Post> Post { get; set; }
+        public virtual DbSet<Profile> Profiles { get; set; }
 
-        public virtual DbSet<Profile> Profile { get; set; }
-
-        public virtual DbSet<Project> Project { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
 
         public virtual DbSet<Qualifications> Qualifications { get; set; }
 
-        public virtual DbSet<Skill> Skill { get; set; }
+        public virtual DbSet<Skill> Skills { get; set; }
 
         public virtual DbSet<Staff> Staff{ get; set; }
 
-        public virtual DbSet<Track> Track { get; set; }
+        public virtual DbSet<Track> Tracks { get; set; }
 
-        public virtual DbSet<UserMessages> UserMessage { get; set; }
+        public virtual DbSet<UserMessages> UserMessages { get; set; }
+
+        public virtual DbSet<Notification> Notifications { get; set; }
+
+        public virtual DbSet<Group> Groups { get; set; }
+
+        public virtual DbSet<Keyword> Keywords { get; set; }
+
+        public virtual DbSet<UsersApplications> UsersApplications { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

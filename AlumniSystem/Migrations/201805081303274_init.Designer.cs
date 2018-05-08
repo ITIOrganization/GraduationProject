@@ -13,7 +13,7 @@ namespace AlumniSystem.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201805070929296_init"; }
+            get { return "201805081303274_init"; }
         }
         
         string IMigrationMetadata.Source

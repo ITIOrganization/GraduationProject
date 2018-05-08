@@ -25,6 +25,8 @@ namespace AlumniSystem.Models
         [DefaultValue(false)]
         public Boolean IsApproved { get; set; }
 
+        public string HeaderImage { get; set; }
+
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
 

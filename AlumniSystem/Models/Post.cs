@@ -18,11 +18,13 @@ namespace AlumniSystem.Models
         [Required]
         public DateTime PublishedDate { get; set; }
 
-        [Required]
-        public TimeSpan PubishedTime { get; set; }
+        public List<string> PostImages { get; set; }
 
         [DefaultValue(false)]
-        public bool IsLiked { get; set; }
+        public bool HaveImage { get; set; }
+
+        [Required]
+        public TimeSpan PubishedTime { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }

@@ -10,16 +10,18 @@ namespace AlumniSystem.Models
 {
     public class Comment
     {
-        public int Id { get; set; }
+        
+        [Key]
+        [ForeignKey("ApplicationUser")]
+        [Column(Order = 1)]
+        public string UserId { get; set; }
 
         [Required]
         public string Body { get; set; }
 
-        [DefaultValue(false)]
-        public bool IsLiked { get; set; }
-        [ForeignKey("ApplicationUser")]
-        public string UserId { get; set; }
-
+        
+        [Key]
+        [Column(Order =2)]
         [ForeignKey("Post")]
         public int PostId { get; set; }
 

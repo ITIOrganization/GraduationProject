@@ -25,13 +25,12 @@ namespace AlumniSystem.Models
         [Required]
         public string Department { get; set; }
 
-        [Required]
-        [StringLength(20)]
-        public string Grade { get; set; }
+       
+        public Grade Grade { get; set; }
 
-        [Required]
-        [Range(0,100)]
-        public int Degree { get; set; }
+        public Degree Degree { get; set; }
+
+        public virtual List<ApplicationUser> ApplicationUsers { get; set; }
 
     }
 }

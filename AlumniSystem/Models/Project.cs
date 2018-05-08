@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using System;
 namespace AlumniSystem.Models
 {
     public class Project
@@ -10,6 +10,8 @@ namespace AlumniSystem.Models
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
+
+        public DateTime CreatedDate { get; set; }
 
         [StringLength(500)]
         public string Description { get; set; }

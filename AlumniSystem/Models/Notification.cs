@@ -1,28 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace AlumniSystem.Models
 {
-    public class Complain
+    public class Notification
     {
         public int Id { get; set; }
 
         [Required]
-        public string Header { get; set; }
+        public string Text { get; set; }
 
         [Required]
-        public string Body { get; set; }
+        public DateTime NotifyDate { get; set; }
 
         [Required]
-        public DateTime SendDate { get; set; }
+        public TimeSpan NotifyTime { get; set; }
 
-        [ForeignKey("ApplicationUser")]
+        [DefaultValue(false)]
+        public bool IsRead { get; set; }
+
+        public string Icon { get; set; }
+
+        public string Image { get; set; }
+
         public string UserId { get; set; }
-   
+
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

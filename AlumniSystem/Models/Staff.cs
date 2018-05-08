@@ -26,9 +26,6 @@ namespace AlumniSystem.Models
         [ForeignKey("JobTitle")]
         public int JobTitleId { get; set; }
 
-        [ForeignKey("Qualifications")]
-        public int QualificationsId { get; set; }
-
         [DefaultValue(false)]
         public bool IsApproved { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
@@ -36,9 +33,10 @@ namespace AlumniSystem.Models
         public virtual Branch Branch { get; set; }
 
         public virtual JobTitle JobTitle { get; set; }
-        public virtual Qualifications Qualifications { get; set; }
 
         public virtual List<Experience> Experiences { get; set; }
+
+       
 
     }
 }

@@ -164,7 +164,8 @@ namespace AlumniSystem.Controllers
                 };
                 var user = new ApplicationUser
                 {
-                    Name=model.Name,
+                    Fname=model.Fname,
+                    Lname=model.Lname,
                     UserName = model.UserName,
                     Email = model.Email,
                     PhoneNumber=model.PhoneNumber,

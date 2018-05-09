@@ -9,8 +9,12 @@ namespace AlumniSystem.Models
     public class GraduateViewModel
     {
         [Required]
-        [Display(Name = "Full Name")]
-        public string Name { get; set; }
+        [Display(Name = "First Name")]
+        public string Fname { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string Lname { get; set; }
 
         [Required]
         [DataType(DataType.PhoneNumber)]

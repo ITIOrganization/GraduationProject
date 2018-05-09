@@ -1,0 +1,161 @@
+﻿@using AlumniSystem.Models
+@model IEnumerable<Graduate>
+@{
+    ViewBag.Title = "Graduates";
+}
+
+<h2>Graduates</h2>
+
+<link href="~/Scripts/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+
+<script>
+
+    $(function() {
+        $(".bb").on("click",
+            function() {
+                $("#modalone").toggle(1000);
+            });
+    });
+
+    function mod() {
+        $("#modalone").toggle(1000).modal();
+
+
+    }
+    function hide(e) {
+        $(e.parentElement.parentElement).hide(1000);
+
+        setTimeout(function () {
+            e.parentElement.parentElement.remove();
+        }, 1200);
+    };
+</script>
+
+<p>
+    @Html.ActionLink("Create New", "AddGraduate", null, new { @class = "btn btn-success" })
+</p>
+
+<table id="tb" class="table table-bordered table-hover table-striped table-responsive">
+    <thead>
+        <tr>
+            <td>
+                Name
+            </td>
+         
+            <td>
+                Address
+            </td>
+            <td>
+                E-mail
+            </td>
+            <td>
+                Phone Number
+            </td>
+            <td class="col-sm-1">
+                Track
+            </td>
+            <td>
+                Branch
+            </td>
+            <td>
+                Intake
+            </td>
+            <td></td>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.ActionLink(item.ApplicationUser.Fname + " " + item.ApplicationUser.Lname, null, item.Id, new {})
+
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.PhoneNumber)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Track.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Branch.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Intake)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "EditInstructor", new { id = item.Id }, new { @class = "btn btn-info" })
+                @Ajax.ActionLink("Courses", "_AjaxDetailCourses", new { id = item.Id }, new AjaxOptions()
+           {
+               UpdateTargetId = "divdata",
+               InsertionMode = InsertionMode.Replace,
+               OnComplete = "mod()"
+
+           }, new { @class = "btn btn-warning" })*@
+
+                @*@Html.ActionLink("Delete", "DeleteInsructor", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Are You Sure To Remove " + item.ApplicationUser.UserName + " If He have Courses That May be Blocked');" })*@
+
+
+
+                @Ajax.ActionLink("Block", "BlockGraduate", new { id = item.Id }, new AjaxOptions()
+           {
+               OnComplete = "hide(this)",
+               Confirm = "Are You Sure"
+           }, new { @class = "btn btn-danger" })
+            </td>
+
+        </tr>
+    }
+
+</table>
+<div class="modal" id="modalone" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p>Graduate Information </p>
+            </div>
+            <div class="modal-body text-center">
+                <div id="divdata">
+
+                </div>
+              
+            </div>
+            <div class="modal-footer">
+                <p class="text-center">
+                    ITI
+                    <span class="bb close" data-dismiss="modal">&times;</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/datatables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap.js"></script>
+    
+
+    <script>
+        $(function() {
+            $('#tb').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "pagingType": "full_numbers"
+            });
+        });
+    </script>
+
+}

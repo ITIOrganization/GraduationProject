@@ -46,23 +46,25 @@ namespace AlumniSystem
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: "66c19b36-fd1c-44ce-816e-bde993923361",
+                clientSecret: "uywmfMRQ39;@bvBTIU571?#");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseTwitterAuthentication(
+                consumerKey: "m5qOyoXb8dFwDz45t3AYh4WtT",
+                consumerSecret: "hKoKOb4nfD65PBFKcHb5xj5WtaVD5G9niJ3jk25dejJJSA0UgI");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+                appId: "150900822389499",
+                appSecret: "d00a0ddf700c563a0d34bd7984a5c32a"
+            );
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "118416597455-jfravf0tocu7j9horeviolbth3f5cbn5.apps.googleusercontent.com",
+                ClientSecret = "GEvtiYMNWUzXj0tdEOoDhV05"
+            });
+
         }
     }
 }

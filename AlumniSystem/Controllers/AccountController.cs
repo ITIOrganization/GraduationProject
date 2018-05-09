@@ -17,7 +17,7 @@ namespace AlumniSystem.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        ApplicationDbContext db = new ApplicationDbContext();
         public AccountController()
         {
             //king is talking from iti
@@ -153,12 +153,40 @@ namespace AlumniSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var company = new Company
+                {
+                    Description = model.Description,
+                    NumberOfEmployees = model.NumberOfEmployees,
+                    CompanyPhone = model.CompanyPhone,
+                    Website = model.Website,
+                    City = model.City,
+                    ZipCode = model.ZipCode,
+                };
+                var user = new ApplicationUser
+                {
+                    Name=model.Name,
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    PhoneNumber=model.PhoneNumber,
+                    ProfileImage=model.ProfileImage,
+                    Address = model.Address,
+                    DateOfBirth=DateTime.Now.AddYears(-25)
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    try
+                    {
+                        company.Id = user.Id;
+                        db.Companies.Add(company);
+                        db.SaveChanges();
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    }
+                    catch
+                    {
+                        return View(model);
+                    }
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

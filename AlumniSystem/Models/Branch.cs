@@ -11,6 +11,7 @@ namespace AlumniSystem.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name ="Branch")]
         [StringLength(50)]
         public string Name { get; set; }
 

@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AlumniSystem.Models;
+using System.IO;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace AlumniSystem.Controllers
 {
@@ -141,6 +144,14 @@ namespace AlumniSystem.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            StreamReader egyptCities = new StreamReader(Server.MapPath("~/eg.json"));
+            string json = egyptCities.ReadToEnd();
+            List<Item> items = JsonConvert.DeserializeObject<List<Item>>(json);
+            List<string> cities = new List<string>();
+            foreach (var item in items)
+                cities.Add(item.City);
+            SelectList listOfCities = new SelectList(cities);
+            ViewBag.cities = listOfCities;
             return View();
         }
 

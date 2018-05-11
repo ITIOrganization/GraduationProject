@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace AlumniSystem.Models
 {
@@ -78,11 +79,13 @@ namespace AlumniSystem.Models
         [DataType(DataType.PhoneNumber)]
         [Display(Name ="Mobile Phone")]
         [RegularExpression("^\\d{11}$", ErrorMessage = "Invalid Phone Number - Must be 11 Digit")]
+        [Remote("CheckPhone", "Admin", ErrorMessage = "This Phone Number Is Exist")]
         public string PhoneNumber { get; set; }
 
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+        [Remote("CheckEmail","Admin",ErrorMessage ="Email Is Exist")]
         public string Email { get; set; }
 
 
@@ -94,11 +97,12 @@ namespace AlumniSystem.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         [Required]
         [Display(Name ="Company Name")]
+        [Remote("CheckUserName","Admin",ErrorMessage ="This Company Is Already Exist")]
         public string UserName { get; set; }
 
         [Required]
@@ -108,6 +112,7 @@ namespace AlumniSystem.Models
         [Required]
         [Display(Name="Company Phone")]
         [RegularExpression("^\\d{11}$", ErrorMessage = "Invalid Phone Number - Must be 11 Digit")]
+        [Remote("CheckPhone","Admin",ErrorMessage ="This Phone Number Is Exist")]
         public string CompanyPhone { get; set; }
 
         [Required]
@@ -152,7 +157,7 @@ namespace AlumniSystem.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

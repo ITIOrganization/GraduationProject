@@ -192,6 +192,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Item.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -207,6 +208,10 @@
     <Compile Include="Migrations\201805092159192_gg.cs" />
     <Compile Include="Migrations\201805092159192_gg.Designer.cs">
       <DependentUpon>201805092159192_gg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805101329181_ff1.cs" />
+    <Compile Include="Migrations\201805101329181_ff1.Designer.cs">
+      <DependentUpon>201805101329181_ff1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -235,6 +240,7 @@
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\PasswordGenerator.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Project.cs" />
@@ -324,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805092159192_gg.resx">
       <DependentUpon>201805092159192_gg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805101329181_ff1.resx">
+      <DependentUpon>201805101329181_ff1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

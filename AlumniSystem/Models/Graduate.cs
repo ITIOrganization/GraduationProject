@@ -14,7 +14,7 @@ namespace AlumniSystem.Models
         public string Id { get; set; }
 
         [ForeignKey("JobTitle")]
-        public int JobTitleId { get; set; }
+        public int? JobTitleId { get; set; }
         [StringLength(500)]
         public string CareerObjective { get; set; }
 

@@ -1,12 +1,15 @@
 ﻿using AlumniSystem.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using WorkingCode.CodeProject.PwdGen;
 
 namespace AlumniSystem.Controllers
 {
@@ -81,6 +84,7 @@ namespace AlumniSystem.Controllers
         }
         public async Task<ActionResult> ApproveCompany(string Id)
         {
+            //isConfirmed??
             await userManager.AddToRolesAsync(Id, _Roles.Company);
             return RedirectToAction("BlockedCompanies");
         }
@@ -110,29 +114,72 @@ namespace AlumniSystem.Controllers
                     Email = model.Email,
                     Address = model.Address,
                     ProfileImage = model.ProfileImage,
+                    DateOfBirth=DateTime.Now.AddYears(-25)
                 };
 
+                //Generate Random Password
+                PasswordGenerator passwordGenerator = new PasswordGenerator();
+                passwordGenerator.Maximum = 10;
+                passwordGenerator.ConsecutiveCharacters = true;
+                passwordGenerator.RepeatCharacters = true;
+                passwordGenerator.ExcludeSymbols = true;
+                var password = passwordGenerator.Generate();
 
-                var result = await userManager.CreateAsync(user, model.Password);
+                var result = await userManager.CreateAsync(user, password);
                 if (result.Succeeded)
                 {
                     var graduate = new Graduate
                     {
                         Id = user.Id,
-                        TrackId = model.Track.Id,
-                        BranchId = model.Branch.Id
+                        Intake=model.Intake,
+                        TrackId = model.TrackId,
+                        BranchId = model.BranchId
                     };
-                    db.Graduates.Add(graduate);
-                    db.SaveChanges();
+                    try
+                    {
+                        db.Graduates.Add(graduate);
+                        db.SaveChanges();
 
-                    await userManager.AddToRoleAsync(user.Id, _Roles.Graduate);
+                        await userManager.AddToRoleAsync(user.Id, _Roles.Graduate);
+                        ////////////send email to graduate include userName and Password
 
-                    return RedirectToAction("index");
+                        return RedirectToAction("index");
+                    }
+                    catch
+                    {
+                        return View(model);
+                    }
                 }
             }
+
+            var tracks = new SelectList(db.Tracks.ToList(), "Id", "Name");
+            var branchs = new SelectList(db.Branches.ToList(), "Id", "Name");
+            ViewBag.tracks = tracks;
+            ViewBag.branchs = branchs;
             return View(model);
         }
 
+        public JsonResult CheckEmail(string email)
+        {
+            return Json(_RemoteCheck.CheckNameRemote(email, null, (em) => userManager.Users.Any(c => c.Email == em)), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CheckUserName(string UserName)
+        {
+            return Json(_RemoteCheck.CheckNameRemote(UserName, null, (n) => userManager.Users.Any(c => c.UserName == n)), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult CheckPhone(string companyPhone, string PhoneNumber)
+        {
+            if (companyPhone != null)
+                return Json(_RemoteCheck.CheckPhoneRemote(companyPhone, null, (ph) => db.Companies.Any(c => c.CompanyPhone == ph)), JsonRequestBehavior.AllowGet);
+            if (PhoneNumber != null)
+                return Json(_RemoteCheck.CheckPhoneRemote(PhoneNumber, null, (ph) => userManager.Users.Any(c => c.PhoneNumber == ph)), JsonRequestBehavior.AllowGet);
+            return RedirectToAction("Action", "Account");
+        }
+
+
+
     }
+
 }
     

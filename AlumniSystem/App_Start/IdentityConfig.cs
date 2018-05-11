@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -18,7 +21,29 @@ namespace AlumniSystem
     {
         public Task SendAsync(IdentityMessage message)
         {
+            var email = ConfigurationManager.AppSettings.Get("confirm_email");
+            var pass = ConfigurationManager.AppSettings.Get("confirm_pass");
+
             // Plug in your email service here to send an email.
+            SmtpClient client = new SmtpClient()
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(email,pass)
+            };
+            AppSettingsReader r=new AppSettingsReader();
+           
+            MailMessage msg = new MailMessage(email, message.Destination)
+            {
+                Subject = message.Subject,
+                Body = message.Body
+
+            };
+            client.Send(msg);
+
             return Task.FromResult(0);
         }
     }

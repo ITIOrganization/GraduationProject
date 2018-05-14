@@ -23,7 +23,9 @@ namespace AlumniSystem.Models
 
         public string ProfileImage { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string Fname { get; set; }
+        [Required]
+        public string Lname { get; set; }
 
         [DateOfBirthValidate]
         public DateTime DateOfBirth { get; set; }

@@ -51,6 +51,8 @@ namespace AlumniSystem.Models
 
         public virtual List<Keyword> Keywords { get; set; }
 
+
+
     }
 
     public class ApplicationRole : IdentityRole
@@ -108,6 +110,8 @@ namespace AlumniSystem.Models
         public virtual DbSet<Keyword> Keywords { get; set; }
 
         public virtual DbSet<UsersApplications> UsersApplications { get; set; }
+        public virtual DbSet<JobTitle> JobTitles { get; set; }
+
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

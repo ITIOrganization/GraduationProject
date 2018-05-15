@@ -13,6 +13,7 @@ namespace AlumniSystem.Models
 
         [Required]
         public string Name { get; set; }
+
         [ForeignKey("Graduate")]
         public string GraduateId { get; set; }
 

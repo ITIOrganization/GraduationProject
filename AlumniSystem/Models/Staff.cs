@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -22,20 +23,20 @@ namespace AlumniSystem.Models
         [Required]
         public DateTime HireDate { get; set; }
 
-        [Required]
-        public string JobTitle { get; set; }
+        [ForeignKey("JobTitle")]
+        public int JobTitleId { get; set; }
 
-        [ForeignKey("Qualifications")]
-        public int QualificationsId { get; set; }
-
-
+        [DefaultValue(false)]
+        public bool IsApproved { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual Track Track { get; set; }
         public virtual Branch Branch { get; set; }
 
-        public virtual Qualifications Qualifications { get; set; }
+        public virtual JobTitle JobTitle { get; set; }
 
         public virtual List<Experience> Experiences { get; set; }
+
+       
 
     }
 }

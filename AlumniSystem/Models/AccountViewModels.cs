@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace AlumniSystem.Models
 {
@@ -64,10 +66,28 @@ namespace AlumniSystem.Models
 
     public class RegisterViewModel
     {
+
+        [Required]
+        [Display(Name ="First Name")]
+        public string Fname { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string Lname { get; set; }
+
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name ="Mobile Phone")]
+        [RegularExpression("^\\d{11}$", ErrorMessage = "Invalid Phone Number - Must be 11 Digit")]
+        [Remote("CheckPhone", "Admin", ErrorMessage = "This Phone Number Is Exist")]
+        public string PhoneNumber { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+        [Remote("CheckEmail","Admin",ErrorMessage ="Email Is Exist")]
         public string Email { get; set; }
+
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -77,8 +97,49 @@ namespace AlumniSystem.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name ="Company Name")]
+        [Remote("CheckUserName","Admin",ErrorMessage ="This Company Is Already Exist")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name="Company Size")]
+        public int NumberOfEmployees { get; set; }
+
+        [Required]
+        [Display(Name="Company Phone")]
+        [RegularExpression("^\\d{11}$", ErrorMessage = "Invalid Phone Number - Must be 11 Digit")]
+        [Remote("CheckPhone","Admin",ErrorMessage ="This Phone Number Is Exist")]
+        public string CompanyPhone { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [DataType(DataType.Url)]
+        [Display(Name ="Company Website")]
+        public string Website { get; set; }
+
+        [Required]
+        public string City { get; set; }
+
+        [Required]
+        public string Address { get; set; }
+
+        [Required]
+        [DataType(DataType.PostalCode)]
+        [Display(Name ="Zip Code")]
+        public int ZipCode { get; set; }
+
+        [Display(Name ="Profile Image")]
+        public string ProfileImage { get; set; }
+
+        [Required]
+        [StringLength(500)]
+        public string Description { get; set; }
+
+
     }
 
     public class ResetPasswordViewModel
@@ -96,7 +157,7 @@ namespace AlumniSystem.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

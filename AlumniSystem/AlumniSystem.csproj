@@ -56,6 +56,18 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -119,9 +131,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -134,14 +143,8 @@
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin">
-      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb">
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security">
-      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.Facebook">
       <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
@@ -154,9 +157,6 @@
     </Reference>
     <Reference Include="Microsoft.Owin.Security.Google">
       <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Twitter">
-      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
       <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
@@ -190,18 +190,33 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+<<<<<<< HEAD
+    <Compile Include="Controllers\JobTitleController.cs" />
+    <Compile Include="Controllers\KeywordController.cs" />
+=======
+    <Compile Include="Controllers\Item.cs" />
+>>>>>>> 493c5da73c0845b5d98b71fe90a5b00ecfbc5c7e
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805070929296_init.cs" />
-    <Compile Include="Migrations\201805070929296_init.Designer.cs">
-      <DependentUpon>201805070929296_init.cs</DependentUpon>
+    <Compile Include="Migrations\201805081303274_init.cs" />
+    <Compile Include="Migrations\201805081303274_init.Designer.cs">
+      <DependentUpon>201805081303274_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805071048220_bb.cs" />
-    <Compile Include="Migrations\201805071048220_bb.Designer.cs">
-      <DependentUpon>201805071048220_bb.cs</DependentUpon>
+    <Compile Include="Migrations\201805091828018_ff.cs" />
+    <Compile Include="Migrations\201805091828018_ff.Designer.cs">
+      <DependentUpon>201805091828018_ff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805092159192_gg.cs" />
+    <Compile Include="Migrations\201805092159192_gg.Designer.cs">
+      <DependentUpon>201805092159192_gg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805101329181_ff1.cs" />
+    <Compile Include="Migrations\201805101329181_ff1.Designer.cs">
+      <DependentUpon>201805101329181_ff1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -212,23 +227,35 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Complain.cs" />
+    <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventState.cs" />
     <Compile Include="Models\Experience.cs" />
+    <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Graduate.cs" />
+    <Compile Include="Models\GraduateType.cs" />
+    <Compile Include="Models\GraduateViewModel.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Interest.cs" />
+    <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\JobTitle.cs" />
+    <Compile Include="Models\JobType.cs" />
+    <Compile Include="Models\Keyword.cs" />
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\PasswordGenerator.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Qualifications.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\State.cs" />
     <Compile Include="Models\Track.cs" />
     <Compile Include="Models\UserMessages.cs" />
+    <Compile Include="Models\UsersApplications.cs" />
     <Compile Include="Models\_RemoteCheck.cs" />
     <Compile Include="Models\_Roles.cs" />
     <Compile Include="Models\_ValidationClasses.cs" />
@@ -243,6 +270,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -251,7 +279,19 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+<<<<<<< HEAD
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+=======
+    <Content Include="eg.json" />
+>>>>>>> 493c5da73c0845b5d98b71fe90a5b00ecfbc5c7e
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\font-awesome.css" />
+    <Content Include="Scripts\font-awesome.min.css" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -260,9 +300,17 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\notify.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+<<<<<<< HEAD
+    <Content Include="Scripts\scripts.js" />
     <Content Include="Web.config" />
+=======
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+>>>>>>> 493c5da73c0845b5d98b71fe90a5b00ecfbc5c7e
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -283,7 +331,6 @@
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
@@ -296,8 +343,38 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\Keyword\Index.cshtml" />
+    <Content Include="Views\Keyword\ViewAll.cshtml" />
+    <Content Include="Views\Keyword\Addoredit.cshtml" />
+    <Content Include="Views\JobTitle\Index.cshtml" />
+    <Content Include="Views\JobTitle\ViewAll.cshtml" />
+    <Content Include="Views\JobTitle\Addoredit.cshtml" />
+=======
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Admin\Add.cshtml" />
+    <Content Include="Views\Admin\BlockedCompanies.cshtml" />
+    <Content Include="Views\Admin\BlockedGraduates.cshtml" />
+    <Content Include="Views\Admin\BlockedStaff.cshtml" />
+    <Content Include="Views\Admin\Companies.cshtml" />
+    <Content Include="Views\Admin\Graduates.cshtml" />
+    <Content Include="Views\Admin\Staff.cshtml" />
+>>>>>>> 493c5da73c0845b5d98b71fe90a5b00ecfbc5c7e
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805081303274_init.resx">
+      <DependentUpon>201805081303274_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805091828018_ff.resx">
+      <DependentUpon>201805091828018_ff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805092159192_gg.resx">
+      <DependentUpon>201805092159192_gg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805101329181_ff1.resx">
+      <DependentUpon>201805101329181_ff1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
@@ -311,14 +388,7 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805070929296_init.resx">
-      <DependentUpon>201805070929296_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805071048220_bb.resx">
-      <DependentUpon>201805071048220_bb.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -337,7 +407,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51172</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51172/</IISUrl>
+          <IISUrl>http://localhost:1167/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

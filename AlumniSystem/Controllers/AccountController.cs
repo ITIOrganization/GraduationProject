@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AlumniSystem.Models;
+using System.IO;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace AlumniSystem.Controllers
 {
@@ -17,7 +20,7 @@ namespace AlumniSystem.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        ApplicationDbContext db = new ApplicationDbContext();
         public AccountController()
         {
             //king is talking from iti
@@ -141,6 +144,14 @@ namespace AlumniSystem.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            StreamReader egyptCities = new StreamReader(Server.MapPath("~/eg.json"));
+            string json = egyptCities.ReadToEnd();
+            List<Item> items = JsonConvert.DeserializeObject<List<Item>>(json);
+            List<string> cities = new List<string>();
+            foreach (var item in items)
+                cities.Add(item.City);
+            SelectList listOfCities = new SelectList(cities);
+            ViewBag.cities = listOfCities;
             return View();
         }
 
@@ -153,17 +164,46 @@ namespace AlumniSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var company = new Company
+                {
+                    Description = model.Description,
+                    NumberOfEmployees = model.NumberOfEmployees,
+                    CompanyPhone = model.CompanyPhone,
+                    Website = model.Website,
+                    City = model.City,
+                    ZipCode = model.ZipCode,
+                };
+                var user = new ApplicationUser
+                {
+                    Fname=model.Fname,
+                    Lname=model.Lname,
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    PhoneNumber=model.PhoneNumber,
+                    ProfileImage=model.ProfileImage,
+                    Address = model.Address,
+                    DateOfBirth=DateTime.Now.AddYears(-25)
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    try
+                    {
+                        company.Id = user.Id;
+                        db.Companies.Add(company);
+                        db.SaveChanges();
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    }
+                    catch
+                    {
+                        return View(model);
+                    }
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -184,6 +224,7 @@ namespace AlumniSystem.Controllers
                 return View("Error");
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
+
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 

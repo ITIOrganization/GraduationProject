@@ -27,6 +27,16 @@ namespace AlumniSystem.Models
 
         [Required]
         public int NumberOfEmployees { get; set; }
+
+        [Required]
+        public string City { get; set; }
+
+        [Required]
+        public int ZipCode { get; set; }
+
+        [Required]
+        public string CompanyPhone { get; set; }
+
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

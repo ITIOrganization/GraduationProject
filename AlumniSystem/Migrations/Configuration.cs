@@ -1,7 +1,6 @@
-using AlumniSystem.Models;
-
 namespace AlumniSystem.Migrations
 {
+    using AlumniSystem.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;

@@ -11,10 +11,9 @@ namespace AlumniSystem.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name="Track")]
         [StringLength(30)]
         public string Name { get; set; }
 
-
-        public virtual List<Graduate> Graduates { get; set; }
     }
 }

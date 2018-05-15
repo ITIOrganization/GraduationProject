@@ -11,9 +11,13 @@ namespace AlumniSystem.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name ="Branch")]
         [StringLength(50)]
         public string Name { get; set; }
 
-        public virtual List<Graduate> Graduates { get; set; }
+        [Required]
+        [StringLength(200)]
+        public string Address { get; set; }
+
     }
 }

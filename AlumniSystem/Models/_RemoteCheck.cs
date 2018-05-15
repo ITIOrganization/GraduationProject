@@ -79,5 +79,23 @@ namespace AlumniSystem.Models
             return true;
         }
 
+        /// <summary>
+        /// CheckNameRemote - Normal Function
+        /// </summary>
+        /// <param name="newPhone"></param>
+        /// <param name="currentPhone"></param>
+        /// <param name="isExistFunction"></param>
+        /// <returns></returns>
+        public static bool CheckPhoneRemote(string newPhone, string currentPhone, Predicate<string> isExistFunction)
+        {
+            if (isExistFunction(newPhone))
+            {
+                return false;
+            }
+            return true;
+
+            
+        }
+
     }
 }

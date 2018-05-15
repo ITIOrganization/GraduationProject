@@ -23,7 +23,7 @@ namespace AlumniSystem.Models
         public string ReferenceUrl { get; set; }
 
         [Required]
-        public int CertificationNumber { get; set; }
+        public string CertificationNumber { get; set; }
 
         [ForeignKey("Graduate")]
         public string GraduateId { get; set; }

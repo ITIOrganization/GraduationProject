@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -15,19 +16,27 @@ namespace AlumniSystem.Models
 
         [Required]
         public DateTime StartDate { get; set; }
-
-        [Required]
+        
         public DateTime EndDate { get; set; }
 
-        [ForeignKey("Graduate")]
-        public string GraduateId { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string Location { get; set; }
 
-        [ForeignKey("Staff")]
-        public string StaffId { get; set; }
+        public string Description { get; set; }
 
-        public virtual Graduate Graduate { get; set; }
+        [DefaultValue(false)]
+        public bool IsCusrrentlyWorked { get; set; }
 
-        public virtual Staff Staff { get; set; }
+        [ForeignKey("JobTitle")]
+        public int JobTitleId { get; set; }
+
+        [ForeignKey("ApplicationUser")]
+        public string UserId { get; set; }
+
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
+        public virtual JobTitle JobTitle { get; set; }
 
     }
 }

@@ -28,10 +28,7 @@ namespace AlumniSystem.Models
         [ForeignKey("Qualifications")]
         public int QualificationsId { get; set; }
 
-        public Staff()
-        {
-            Experiences = new List<Experience>();
-        }
+
         public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual Track Track { get; set; }
         public virtual Branch Branch { get; set; }

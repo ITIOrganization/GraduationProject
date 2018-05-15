@@ -33,10 +33,7 @@ namespace AlumniSystem.Models
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
 
-        public Event()
-        {
-            EventStates = new List<EventState>();
-        }
+
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         public virtual List<EventState> EventStates { get; set; }

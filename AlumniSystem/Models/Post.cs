@@ -26,11 +26,7 @@ namespace AlumniSystem.Models
 
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
-        public Post()
-        {
-            Comments = new List<Comment>();
-            Likes = new List<Like>();
-        }
+
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         public virtual List<Comment> Comments { get; set; }

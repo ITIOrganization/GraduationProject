@@ -25,14 +25,6 @@ namespace AlumniSystem.Models
         [ForeignKey("Qualifications")]
         public int QualificationsId { get; set; }
 
-        public Graduate()
-        {
-            Certifications = new List<Certification>();
-            Interests = new List<Interest>();
-            Skills = new List<Skill>();
-            Experiences = new List<Experience>();
-            Projects = new List<Project>();
-        }
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         public virtual Track Track { get; set; }

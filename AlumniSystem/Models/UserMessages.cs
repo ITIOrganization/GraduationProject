@@ -21,17 +21,9 @@ namespace AlumniSystem.Models
         [Column(Order =2)]
         public string ToId { get; set; }
 
-
         public virtual  ApplicationUser ApplicationUser { get; set; }
 
         public virtual Message Message { get; set; }
-
-
-
-
-
-
-
 
     }
 }
